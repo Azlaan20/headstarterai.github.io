@@ -1,0 +1,21 @@
+.education-section {
+    text-align: left;
+    margin-bottom: 20px; /* Optional: Adds space between sections */
+}
+
+.institution-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Space between logo and text */
+}
+
+.institution-logo {
+    width: 50px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.institution-name {
+    font-weight: bold;
+    font-size: 1.2em; /* Optional: Adjust the size as needed */
+}

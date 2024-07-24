@@ -1,0 +1,28 @@
+#footer {
+    background-color: rgba(51, 51, 51, 0); /* Dark gray with 80% opacity */
+    color: #fff; /* White text color */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#footer .copyright {
+    margin: 0;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.social-icon {
+    margin-left: 15px; /* Adjust space between icons */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.social-icon img {
+    width: 24px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    border: none; /* Ensure no border is applied */
+}
