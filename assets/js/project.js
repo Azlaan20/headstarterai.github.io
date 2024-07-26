@@ -1,5 +1,3 @@
-// project.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const projectItems = document.querySelectorAll('.project-item');
     const modal = document.getElementById('projectModal');
@@ -17,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetDetail = document.getElementById(projectId);
         if (targetDetail) {
             targetDetail.classList.add('active');
+
+            // Use setTimeout to ensure that the modal is visible before scrolling
+            setTimeout(() => {
+                targetDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 0);
         }
 
         // Display the modal

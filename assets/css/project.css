@@ -6,7 +6,7 @@
 }
 
 .project-item {
-    width: 30%; /* Adjusted to fit 3 items in a row */
+    width: calc(33.33% - 20px); /* Adjusted to fit 3 items in a row */
     text-align: center;
     cursor: pointer;
     border: 1px solid #ccc;
@@ -113,4 +113,18 @@
 
 .is-hidden {
     display: none; /* or any style that hides the element */
+}
+
+/* Add this media query to handle 2 projects in a row */
+@media (max-width: 768px) {
+    .project-item {
+        width: calc(50% - 20px); /* Adjusted to fit 2 items in a row */
+    }
+}
+
+/* Add this media query to handle 1 project in a row */
+@media (max-width: 480px) {
+    .project-item {
+        width: 100%; /* Adjusted to fit 1 item in a row */
+    }
 }
