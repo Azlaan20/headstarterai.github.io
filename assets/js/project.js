@@ -1,38 +1,70 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("projectModal");
-    const projectItems = document.querySelectorAll(".project-item");
-    const projectDetails = document.querySelectorAll(".project-detail-content");
-    const closeModalButtons = document.querySelectorAll(".close-modal");
+// project.js
 
-    let lastOpenedProject = null;
+document.addEventListener('DOMContentLoaded', () => {
+    const projectItems = document.querySelectorAll('.project-item');
+    const modal = document.getElementById('projectModal');
+    const modalCloseButtons = document.querySelectorAll('.modal .close');
+    const projectDetails = document.querySelectorAll('.project-detail-content');
 
-    // Event listener for project items
-    projectItems.forEach(item => {
-        item.addEventListener("click", () => {
-            const target = item.getAttribute("data-target");
-            projectDetails.forEach(detail => {
-                detail.classList.remove("active");
-            });
-            document.getElementById(target).classList.add("active");
-            modal.style.display = "block";
-            lastOpenedProject = item;
+    // Function to open the modal with the relevant project details
+    function openModal(projectId) {
+        // Hide all project details
+        projectDetails.forEach(detail => {
+            detail.classList.remove('active');
         });
-    });
 
-    // Close button event listener
-    closeModalButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            modal.style.display = "none";
-            if (lastOpenedProject) {
-                lastOpenedProject.scrollIntoView({ behavior: "smooth" });
+        // Show the target project details
+        const targetDetail = document.getElementById(projectId);
+        if (targetDetail) {
+            targetDetail.classList.add('active');
+        }
+
+        // Display the modal
+        modal.style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = 'none';
+        // Remove 'active' class from all project details
+        projectDetails.forEach(detail => {
+            detail.classList.remove('active');
+        });
+    }
+
+    // Event listener for project items to open modal
+    projectItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const targetId = item.getAttribute('data-target');
+            if (targetId) {
+                openModal(targetId);
             }
         });
     });
 
-    // Click outside the modal content to close the modal
-    window.addEventListener("click", (event) => {
+    // Event listener for modal close buttons
+    modalCloseButtons.forEach(closeButton => {
+        closeButton.addEventListener('click', () => {
+            closeModal();
+        });
+    });
+
+    // Event listener for clicking outside the modal content to close it
+    window.addEventListener('click', (event) => {
         if (event.target === modal) {
-            modal.style.display = "none";
+            closeModal();
         }
     });
+
+    // Keyboard interaction: close modal with ESC key
+    window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    // Handle case where project item or modal may be missing
+    if (!modal || projectItems.length === 0) {
+        console.warn('Modal or project items not found. Ensure HTML structure is correct.');
+    }
 });
