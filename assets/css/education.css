@@ -19,3 +19,12 @@
     font-weight: bold;
     font-size: 1.2em; /* Optional: Adjust the size as needed */
 }
+
+.is-visible {
+    display: block; /* or any style that makes the element visible */
+}
+
+.is-hidden {
+    display: none; /* or any style that hides the element */
+}
+

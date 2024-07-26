@@ -2,6 +2,22 @@
     margin: 20px 0;
 }
 
+#experience {
+    display: none;
+    padding: 2em;
+    background: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#experience h2 {
+    font-size: 24px;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
 .tabs {
     overflow: hidden;
     background-color: #000000;
@@ -45,6 +61,7 @@
     border-radius: 8px;
     transition: transform 0.3s;
     flex: 1 1 calc(33.333% - 20px);
+    margin-bottom: 1em;
 }
 
 .experience-item img {
@@ -79,6 +96,16 @@
     width: 80%;
     border-radius: 8px;
     color: #fff;
+    position: relative;
+}
+
+.open-modal {
+    padding: 0.5em 1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .close {
@@ -99,3 +126,12 @@
 .experience-details {
     display: none;
 }
+
+.is-visible {
+    display: block; /* or any style that makes the element visible */
+}
+
+.is-hidden {
+    display: none; /* or any style that hides the element */
+}
+
