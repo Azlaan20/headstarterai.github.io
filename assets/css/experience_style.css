@@ -1,7 +1,3 @@
-#experience5 {
-    margin: 20px 0;
-}
-
 #experience {
     display: none;
     padding: 2em;
@@ -18,64 +14,10 @@
     text-align: center;
 }
 
-.tabs {
-    overflow: hidden;
-    background-color: #000000;
-}
-
-.tab-button {
-    background-color: #9e9d9d;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-}
-
-.tab-button:hover {
-    background-color: #ccc;
-}
-
-.tab-button.active {
-    background-color: #595959;
-}
-
-.tab-content {
-    display: none;
-    padding: 20px;
-}
-
-.experience-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-}
-
 .experience-item {
-    width: 200px;
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 8px;
-    transition: transform 0.3s;
-    flex: 1 1 calc(33.333% - 20px);
     margin-bottom: 1em;
 }
 
-.experience-item img {
-    width: 100px;
-    height: auto;
-    max-width: 150px;
-    margin-bottom: 10px;
-}
-
-.experience-item:hover {
-    transform: scale(1.05);
-}
-
-/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -85,27 +27,16 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    border-radius: 8px;
-    color: #fff;
     position: relative;
-}
-
-.open-modal {
-    padding: 0.5em 1em;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 .close {
@@ -122,16 +53,15 @@
     cursor: pointer;
 }
 
-/* Hide all experience details initially */
 .experience-details {
     display: none;
 }
 
-.is-visible {
-    display: block; /* or any style that makes the element visible */
+.open-modal {
+    padding: 0.5em 1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
-
-.is-hidden {
-    display: none; /* or any style that hides the element */
-}
-

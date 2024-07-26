@@ -3,7 +3,7 @@
         const modal = document.getElementById("experienceModal");
         const closeBtn = document.querySelector(".close");
         const experienceItems = document.querySelectorAll(".experience-item");
-        const experienceDetails = document.querySelectorAll(".experience-details");
+        const experienceDetails = document.querySelectorAll(".experience-details-content");
         let activeTabId = ''; // Variable to store the ID of the active tab
 
         // Automatically open the first tab by default
