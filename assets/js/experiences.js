@@ -1,102 +1,73 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const experienceItems = document.querySelectorAll('.experience-item');
+    const modal = document.getElementById('experienceModal');
+    const modalCloseButtons = document.querySelectorAll('.modal .close');
+    const experienceDetails = document.querySelectorAll('.experience-details-content');
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const modal = document.getElementById("experienceModal");
-        const closeBtn = document.querySelector(".close");
-        const experienceItems = document.querySelectorAll(".experience-item");
-        const experienceDetails = document.querySelectorAll(".experience-details-content");
-        let activeTabId = ''; // Variable to store the ID of the active tab
+    // Function to open the modal with the relevant experience details
+    function openModal(experienceId) {
+        // Hide all experience details
+        experienceDetails.forEach(detail => {
+            detail.classList.remove('active');
+        });
 
-        // Automatically open the first tab by default
-        document.addEventListener("DOMContentLoaded", function() {
-            const firstTab = document.querySelector(".tab-button");
-            if (firstTab) {
-                firstTab.click();
+        // Show the target experience details
+        const targetDetail = document.getElementById(experienceId);
+        if (targetDetail) {
+            targetDetail.classList.add('active');
+
+            // Use setTimeout to ensure that the modal is visible before scrolling
+            setTimeout(() => {
+                targetDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 0);
+        }
+
+        // Display the modal
+        modal.style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = 'none';
+        // Remove 'active' class from all experience details
+        experienceDetails.forEach(detail => {
+            detail.classList.remove('active');
+        });
+    }
+
+    // Event listener for experience items to open modal
+    experienceItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const targetId = item.getAttribute('data-target');
+            if (targetId) {
+                openModal(targetId);
             }
         });
+    });
 
-        // Event listener for experience items
-        experienceItems.forEach(item => {
-            item.addEventListener("click", () => {
-                const target = item.getAttribute("data-target");
-                experienceDetails.forEach(detail => {
-                    detail.style.display = "none";
-                });
-                document.getElementById(target).style.display = "block";
-                modal.style.display = "block";
-
-                // Set the active tab based on the target
-                const tabButton = document.querySelector(`.tab-button[data-target="${target}"]`);
-                if (tabButton) {
-                    openTab({ currentTarget: tabButton }, tabButton.getAttribute("data-target"));
-                }
-            });
+    // Event listener for modal close buttons
+    modalCloseButtons.forEach(closeButton => {
+        closeButton.addEventListener('click', () => {
+            closeModal();
         });
+    });
 
-        // Close button event listener
-        closeBtn.addEventListener("click", () => {
-            modal.style.display = "none";
-        });
-
-        // Click outside the modal content to close the modal
-        window.addEventListener("click", (event) => {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        });
-
-        // Prevent modal closing when clicking inside the tab container
-        const tabsContainer = document.querySelector(".tabs");
-        if (tabsContainer) {
-            tabsContainer.addEventListener("click", (event) => {
-                event.stopPropagation(); // Prevent event from bubbling up to the window
-            });
+    // Event listener for clicking outside the modal content to close it
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
         }
     });
 
-    function openTab(evt, tabId) {
-        // Hide all tab content
-        let contents = document.querySelectorAll('.tab-content');
-        contents.forEach(content => content.style.display = 'none');
-    
-        // Remove active class from all tab buttons
-        let buttons = document.querySelectorAll('.tab-button');
-        buttons.forEach(button => button.classList.remove('active'));
-    
-        // Show the selected tab content and set the clicked button as active
-        document.getElementById(tabId).style.display = 'block';
-        evt.currentTarget.classList.add('active');
-    }
-    
-    function closeTab() {
-        // Hide the current tab content
-        document.getElementById('experience5').style.display = 'none';
-    
-        // Scroll to the article with id 'experience'
-        document.getElementById('experience').scrollIntoView({ behavior: 'smooth' });
-    
-        // Optionally, you can update the URL fragment (hash) for better navigation
-        window.location.hash = 'experience';
-    }
-    
-    
-    
-    // Initialize by opening the first tab
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('.tab-button').click();
-    });
-    
-
-    // Function to keep track of the active tab when reopening
-    function setActiveTab(tabName) {
-        const tabButton = document.querySelector(`.tab-button[data-target="${tabName}"]`);
-        if (tabButton) {
-            openTab({ currentTarget: tabButton }, tabButton.getAttribute("data-target"));
-        }
-    }
-
-    // Automatically open the active tab on page load
-    document.addEventListener("DOMContentLoaded", function() {
-        if (activeTabId) {
-            setActiveTab(activeTabId);
+    // Keyboard interaction: close modal with ESC key
+    window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeModal();
         }
     });
+
+    // Handle case where modal or experience items may be missing
+    if (!modal || experienceItems.length === 0) {
+        console.warn('Modal or experience items not found. Ensure HTML structure is correct.');
+    }
+});
