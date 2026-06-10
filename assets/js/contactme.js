@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "template_4rmi9bn",
             form,
             {
-                publicKey: "7VNugz82L2_fC-d_8"
+                publicKey: "Hdg6AIaiNqnkBHIW1"
             }
         )
         .then(function (response) {
